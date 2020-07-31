@@ -1,22 +1,38 @@
+
+#include "search.h"
+#include "thread.h"
+#include "tt.h"
+#include "usi.h"
+#include "misc.h"
 #include <iostream>
 using namespace std;
 
-class CPPClass{
-    public:
-        CPPClass(){}
+class PythonBind {
+public:
+    PythonBind() {
+        USI::init(Options);
+        Bitboards::init();
+        Position::init();
+        Search::init();
+        Threads.set(Options["Threads"]);
+        Eval::init();
+    }
 
-        void func(double& x){
-            x = 13.444444444444;
-        }
+    Value eval(std::string sfen) {
+        Position pos;
+        StateListPtr states(new StateList(1));
+        pos.set(sfen, &states->back(), Threads.main());
+        return Eval::compute_eval(pos);
+    }
 };
 
 extern "C" {
-    CPPClass* CPPClass_py(){
-        return new CPPClass();
+
+    PythonBind* YaneuraOu() {
+        return new PythonBind();
     }
-    double func_py(CPPClass* myClass){
-        double x;
-        myClass->func(x);
-        return x;
+
+    Value nnue_eval(PythonBind* pythonBind, std::string sfen) {
+        return pythonBind->eval(sfen);
     }
 }
