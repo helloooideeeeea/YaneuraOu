@@ -16,6 +16,8 @@
 #endif
 
 #include "evaluate_nnue.h"
+#include <iostream>
+#include <filesystem>
 
 namespace Eval {
 
@@ -230,10 +232,11 @@ namespace Eval {
   if (!Options["SkipLoadingEval"])
 #endif
   {
-            auto full_dir_name = Path::Combine(Directory::GetCurrentFolder(), (std::string)Options["EvalDir"]);
-            sync_cout << "info string EvalDirectory = " << full_dir_name << sync_endl;
 
-    const std::string dir_name = Options["EvalDir"];
+    namespace fs = std::filesystem;
+    fs::path current_dir = fs::current_path();
+    auto dir_name = Path::Combine(current_dir.parent_path().string(), (std::string)Options["EvalDir"]);
+    sync_cout << "info string EvalDirectory = " << dir_name << sync_endl;
 
     const std::string file_name = Path::Combine(dir_name, NNUE::kFileName);
     std::ifstream stream(file_name, std::ios::binary);
@@ -254,6 +257,7 @@ namespace Eval {
 
     // 初期化
     void init() {
+        load_eval();
     }
 
     // 評価関数。差分計算ではなく全計算する。

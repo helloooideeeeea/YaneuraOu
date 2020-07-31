@@ -340,7 +340,7 @@
 #define MAX_PLY_NUM 2000
 #define USE_SEE
 #define USE_MATE_1PLY
-#define EVAL_MATERIAL
+#define EVAL_NNUE
 //#define LONG_EFFECT_LIBRARY
 #define USE_KEY_AFTER
 #define ENABLE_TEST_CMD
