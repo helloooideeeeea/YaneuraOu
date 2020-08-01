@@ -17,13 +17,13 @@ public:
         Eval::init();
     }
 
-    Value nnue_eval(std::string sfen) {
+    int32_t nnue_eval(std::string sfen) {
         Position pos;
         StateListPtr states(new StateList(1));
         pos.set(sfen, &states->back(), Threads.main());
         Value value = Eval::compute_eval(pos);
         Threads.set(0);
-        return value;
+        return static_cast<int32_t>(value);
     }
 };
 
