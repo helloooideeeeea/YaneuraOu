@@ -22,7 +22,6 @@ public:
         StateListPtr states(new StateList(1));
         pos.set(sfen, &states->back(), Threads.main());
         Value value = Eval::compute_eval(pos);
-        Threads.set(0);
         return static_cast<int>(value);
     }
 };
