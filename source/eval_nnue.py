@@ -1,6 +1,5 @@
 # Python imports
 import ctypes
-import numpy as np
 
 # Open shared CPP library:
 soLib=ctypes.cdll.LoadLibrary('./naked_share.so')
