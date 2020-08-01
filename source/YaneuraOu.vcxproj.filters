@@ -265,6 +265,10 @@
     <ClInclude Include="types.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="python_eval.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="movegen.cpp">
@@ -402,6 +406,9 @@
     <ClCompile Include="benchmark.cpp">
       <Filter>リソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="python_eval.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\docs\USI拡張コマンド.txt">
@@ -442,5 +449,10 @@
     <None Include="..\docs\README2017.md">
       <Filter>docs</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="YaneuraOu.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
