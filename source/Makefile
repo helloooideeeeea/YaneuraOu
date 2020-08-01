@@ -47,14 +47,14 @@ DEBUG = OFF
 
 
 # clangでコンパイルしたほうがgccより数%速いっぽい。
-#COMPILER = g++
-COMPILER = clang++
+COMPILER = g++
+#COMPILER = clang++
 
 
 # 標準的なコンパイルオプション
-CFLAGS   = -std=c++17 -fno-exceptions -fno-rtti -Wextra -Ofast -MMD -MP -fpermissive
+CFLAGS   = -std=c++17 -fno-exceptions -fno-rtti -Wextra -Ofast -MMD -MP -fpermissive -fPIC -g
 WCFLAGS  =
-LDFLAGS  =
+LDFLAGS  = -shared
 LIBS     =
 INCLUDE  = # -I../include
 
@@ -101,7 +101,7 @@ ifeq ($(OS),Windows_NT)
 	TARGET = YaneuraOu-by-gcc.exe
 else
 	CFLAGS += -D_LINUX
-	TARGET = YaneuraOu-by-gcc
+	TARGET = naked_share.so
 endif
 
 # リンク時最適化。
@@ -177,8 +177,7 @@ endif
 
 #SOURCES  = $(wildcard *.cpp)
 SOURCES  = \
-	main.cpp                                                                   \
-	python_eval.cpp															   \
+    python_eval.cpp                                                                  \
 	types.cpp                                                                  \
 	bitboard.cpp                                                               \
 	misc.cpp                                                                   \
@@ -367,3 +366,4 @@ clean:
 	rm -f $(OBJECTS) $(DEPENDS) $(TARGET) ${OBJECTS:.o=.gcda}
 
 -include $(DEPENDS)
+

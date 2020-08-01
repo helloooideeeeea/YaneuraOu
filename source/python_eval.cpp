@@ -1,6 +1,7 @@
 
 #include "python_eval.h"
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 extern "C" {
@@ -9,7 +10,11 @@ extern "C" {
         return new PythonBind();
     }
 
-    int32_t py_nnue_eval(PythonBind* pythonBind, std::string sfen) {
+    int py_nnue_eval(PythonBind* pythonBind, char sfen[]) {
         return pythonBind->nnue_eval(sfen);
     }
+
+//    void string_test(char sfen[]) {
+//        printf("sfen: %s\n", sfen);
+//    }
 }
