@@ -17,7 +17,6 @@
 
 #include "evaluate_nnue.h"
 #include <iostream>
-#include <filesystem>
 
 namespace Eval {
 
