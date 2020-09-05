@@ -1,5 +1,5 @@
 #pragma once
-#include "python_eval.h"
+#include "c_plus_eval.h"
 #include <iostream>
 #include <stdio.h>
 #include "search.h"
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-PythonBind::PythonBind() {
+CPlusBind::CPlusBind() {
     USI::init(Options);
     Bitboards::init();
     Position::init();
@@ -19,24 +19,9 @@ PythonBind::PythonBind() {
     Eval::init();
 }
 
-int PythonBind::nnue_eval(std::string sfen) {
+int CPlusBind::nnue_eval(std::string sfen) {
     Position pos;
     StateListPtr states(new StateList(1));
     pos.set(sfen, &states->back(), Threads.main());
     return static_cast<int>(Eval::compute_eval(pos));
-}
-
-extern "C" {
-
-    PythonBind* YaneuraOu() {
-        return new PythonBind();
-    }
-
-    int py_nnue_eval(PythonBind* pythonBind, char sfen[]) {
-        return pythonBind->nnue_eval(sfen);
-    }
-
-//    void string_test(char sfen[]) {
-//        printf("sfen: %s\n", sfen);
-//    }
 }

@@ -177,7 +177,7 @@ endif
 
 #SOURCES  = $(wildcard *.cpp)
 SOURCES  = \
-    python_eval.cpp                                                                  \
+    c_plus_eval.cpp                                                                  \
 	types.cpp                                                                  \
 	bitboard.cpp                                                               \
 	misc.cpp                                                                   \

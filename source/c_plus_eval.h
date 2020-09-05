@@ -1,7 +1,7 @@
 #include <iostream>
-class PythonBind {
+class CPlusBind {
 public:
-    PythonBind();
+    CPlusBind();
     int nnue_eval(std::string sfen);
 };
 

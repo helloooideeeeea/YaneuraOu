@@ -232,10 +232,10 @@ namespace Eval {
   if (!Options["SkipLoadingEval"])
 #endif
   {
-
     namespace fs = std::filesystem;
+    //namespace fs = std::experimental::filesystem;
     fs::path current_dir = fs::current_path();
-    auto dir_name = Path::Combine(current_dir.parent_path().string(), (std::string)Options["EvalDir"]);
+    auto dir_name = Path::Combine(current_dir.string(), (std::string)Options["EvalDir"]);
     sync_cout << "info string EvalDirectory = " << dir_name << sync_endl;
 
     const std::string file_name = Path::Combine(dir_name, NNUE::kFileName);
