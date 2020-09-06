@@ -101,7 +101,7 @@ ifeq ($(OS),Windows_NT)
 	TARGET = YaneuraOu-by-gcc.exe
 else
 	CFLAGS += -D_LINUX
-	TARGET = naked_share.so
+	TARGET = libnakedshare.so
 endif
 
 # リンク時最適化。
