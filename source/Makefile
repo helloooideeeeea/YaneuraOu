@@ -52,7 +52,7 @@ COMPILER = g++
 
 
 # 標準的なコンパイルオプション
-CFLAGS   = -std=c++17 -fno-exceptions -fno-rtti -Wextra -Ofast -MMD -MP -fpermissive -fPIC -g
+CFLAGS   = -Wall -O3 -std=c++17 -fno-exceptions -fno-rtti -Wextra -Ofast -MMD -MP -fpermissive -fPIC -g
 WCFLAGS  =
 LDFLAGS  = -shared
 LIBS     =
